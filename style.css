@@ -1,0 +1,824 @@
+
+ /* глобальні властивості */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*розміри padding та border зазвичай додаються зверху до заданої ширини. У режимі border-box вони включаються до неї*/
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.61; /*Це CSS-властивість встановлюєміжрядковий інтервал [1]. Значення 1.6є безрозмірним множником: воно множить поточний розмір шрифту (font-size) на 1.6, створюючи комфортну для читання «легкість» тексту*/
+}
+html {
+    scroll-behavior: smooth; 
+    height: 100%;
+    margin: 0;
+}
+body{
+     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+section {
+    scroll-margin-top: 80px; 
+}
+.main-content {
+    flex: 1;
+}
+ /* Навігація права частина */
+.navbar {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 40px 0; 
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.03); 
+}
+/* Список меню */
+.nav-menu {
+    background-color: #1A1A2E;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    gap: 50px; 
+    justify-content: center;  
+    align-items: center;      
+    padding: 20px 0;  
+}
+/* Посилання */
+.nav-menu li a {
+    text-decoration: none;
+    color: #90c2f4; 
+    font-size: 14px; 
+    font-weight: 400;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+.nav-menu li a:hover {
+    color: #d4a373; 
+    transform: translateY(-2px); 
+}
+/* Наведення */
+.nav-menu li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #d4a373;
+    transition: width 0.3s;
+    margin: 5px auto 0;
+}
+.nav-menu li a:hover::after {
+    width: 100%;
+}
+ /*Header Заголовок*/
+.header {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 60px 10%; 
+    background-color: #ecf5ff;
+    min-height: 80vh; 
+}
+
+.header-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+/* Логотип */
+.header-text img:first-child { 
+    max-width: 80px; 
+    height: auto;
+    margin-bottom: 40px;
+    margin-top: 0; 
+}
+
+/* Заголовок 1*/
+.header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #1a1a2e;
+    margin: 0 0 20px 0;
+    letter-spacing: 2px;
+}
+
+/* Слоган */
+.slogan {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; 
+    line-height: 1.8;
+    color: #1A1A2E; 
+    max-width: 500px;
+    margin: 0 0 40px 0; 
+}
+
+a.btn {
+    display: inline-block;
+    padding: 18px 45px;
+    margin: 20px 0;
+
+    background-color: #1a1a2e; 
+    color: #90c2f4;          
+    border: 1px solid #c5a059; 
+    
+    text-decoration: none;     
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;     
+    
+    border-radius: 5px;         
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    color:#c5a059;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(26, 26, 46, 0.2); 
+}
+.btn:active {
+    transform: translateY(-1px);
+}
+.header-img{
+    flex: 1;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 20px;
+    animation: fadeInImg 1.5s ease-out forwards;
+    box-shadow: 20px 20px 0px #0c052f; 
+}
+.header-img img{
+    max-width: 100%;     
+    width: 350px;
+    height: auto;
+    border-radius: 15px;  
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.5s ease; 
+}
+/*Про мене*/
+.about {
+    padding: 30px 0;
+    background-color: #ffffff; 
+    display: flex;
+    justify-content: center;
+}
+
+
+.about-container {
+    max-width: 1400px; 
+    width: 90%;
+    text-align: left;
+}
+
+.about-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1a1a2e; 
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.h2 {
+    width: 400px; 
+    border: 0;
+    border-top: 2px solid #c5a059;  
+    margin: 15px auto 30px auto; 
+    opacity: 0.8; 
+
+}
+
+.about p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.about-features {
+    display: flex;
+    justify-content: space-between; 
+    gap: 40px;
+}
+
+.feature {
+    flex: 1;
+    padding-bottom: 40px;
+}
+
+/* Стилі цифр */
+.feature span {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #c5a059; 
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Текст під цифрами */
+.feature p {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    color: #1a1a2e; 
+    margin-bottom: 0; 
+}
+/*Мої роботи*/
+.works {
+    padding: 40px 10%;
+    text-align: center;
+    background-color: #ecf5ff;
+}
+
+.m {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1a1a2e; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Сітка карток */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Стиль кожної картки */
+.card, .card-c1 {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #eee;
+    transition: all 0.4s ease;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+.card:hover, .card-c1:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border-color: #d4a373;
+}
+/* Опис та заголовки */
+.project-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+.card-plain h3 {
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Фото в картках */
+.card img, .card-c1 img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; 
+    margin-bottom: 20px;
+    background-color: #f0f0f0; 
+}
+
+.card h3, .card-c1 h3 {
+    font-size: 1.2rem;
+    margin: 10px 15px;
+    color: #1a1a1a;
+}
+
+.card p, .card-c1 p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0 15px 15px;
+    line-height: 1.5;
+}
+/* Проекти*/
+.projects {
+     padding: 40px 0; 
+    background-color: #f9fbff;
+    background-color: #fff;
+}
+
+.cards-static {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 60px;                      
+    max-width: 1100px;           
+    margin: 0 auto;                  
+    align-items: center;           
+}
+
+.card-plain {
+    padding: 0; 
+}
+
+.card-plain h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    
+}
+.projects h2{
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1a1a2e; 
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.card-plain p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Фото */
+.card-plain img {
+    width: 100%;
+    height: 600px;           
+    object-fit: cover;       
+    display: block;
+    box-shadow: 20px 20px 0px #f9f9f9; 
+}
+/* --- Кнопка "Перейти" --- */
+.container {
+    display: flex;         
+    justify-content: center; 
+    align-items: center;     
+    padding: 40px 0;        
+    width: 100%;            
+}
+.btn2 {
+     display: inline-block;
+    padding: 18px 45px;
+    margin: 20px 0;
+    background-color: #1a1a2e; 
+    color: #90c2f4;           
+    border: 1px solid #c5a059; 
+    text-decoration: none;     
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;     
+    border-radius: 5px;         
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn2:hover {
+    color:#c5a059;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(26, 26, 46, 0.2); 
+}
+.btn2:active {
+    transform: translateY(-1px);
+}
+/* Футер*/
+.footer {
+    background-color: #1a1a2e; 
+    color: #ffffff;
+    padding: 60px 0 30px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Меню в футере */
+.footer {
+    display: block;
+    margin-top: 0; /* Убирает внешний отступ сверху */
+    padding: 60px 0 30px;
+    background-color: #1a1a2e;
+    width: 100%;           
+}
+.footer-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.footer-menu li a {
+    text-decoration: none;
+    color: #90c2f4; 
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.footer-menu li a:hover {
+    color: #c5a059; /* Золото при наведении */
+}
+
+/* Разделительная линия */
+.footer-line {
+    border: 0;
+    border-top: 1px solid rgba(197, 160, 89, 0.2); /* Очень тонкое прозрачное золото */
+    margin-bottom: 30px;
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin: 10px 0;
+}
+
+.footer-info a {
+    color: #c5a059;
+    text-decoration: none;
+}
+/* Комп'ютерне проєктування*/
+.work-page-header {
+    padding: 40px 0 60px; /* Великі відступи зверху */
+    background-color: #ddeeff;
+    display: flex;
+    justify-content: center;
+}
+
+.container-mini {
+    max-width: 1000px; /* Трохи вужче за основний контейнер для акценту на тексті */
+    width: 90%;
+    text-align: center; /* Центрування заголовку та тексту */
+}
+
+.work-page-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.work-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+}
+/* Список меню */
+.navbar {
+    background-color: #1A1A2E;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    gap: 50px; 
+    justify-content: center;  
+    align-items: center;      
+    padding: 0px 0;  
+}
+/* Ссылки */
+.navbar li a {
+    text-decoration: none;
+    color: #90c2f4; 
+    font-size: 14px; 
+    font-weight: 400;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+.navbar li a:hover {
+    color: #d4a373; 
+    transform: translateY(-2px); 
+}
+/* Тонкая линия подчеркивания при наведении */
+.navbar li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #d4a373;
+    transition: width 0.3s;
+    margin: 5px auto 0;
+}
+.navbar li a:hover::after {
+    width: 100%;
+}
+
+.portfolio-container {
+    max-width: 1200px; /* Ширина контента на ноутбуке */
+    margin: 0 auto;    /* Центрируем всё по середине */
+    padding: 60px 20px;
+}
+
+.portfolio-grid {
+    display: grid;
+    /* Создаем 3 колонки. Если работа wide — она займет 2 колонки */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    align-items: start;
+    grid-auto-flow: dense; /* ЦЕ ДОЗВОЛИТЬ СІТЦІ ПЕРЕСТАВЛЯТИ КАРТКИ, ЩОБ НЕ БУЛО ДІРОК */
+
+}
+
+/* Элемент работы */
+.work-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Если работа широкая — она растянется на 2 колонки, но картинка не исказится */
+.work-item.wide {
+    grid-column: span 2;
+}
+
+/* Если работа высокая */
+.work-item.tall img {
+    height: 600px;
+}
+
+.work-link {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+}
+
+/* ГЛАВНОЕ: картинка больше не будет тянуться, она сохраняет пропорции */
+.work-link img {
+    width: 100%;
+    height: auto; /* Позволяет картинке быть любой высоты */
+    display: block;
+    object-fit: contain; /* Картинка видна полностью без обрезки */
+    transition: transform 0.4s ease;
+}
+
+.work-link:hover img {
+    transform: scale(1.02);
+}
+
+/* Инфо ПОД картинкой */
+.work-info-under {
+    text-align: left;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.year { color: #c5a059; font-weight: bold; font-size: 13px; }
+.soft { color: #1a1a2e; opacity: 0.6; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 5px;
+    text-transform: none;
+}
+
+/* МОДАЛЬНОЕ ОКНО (как ты и хотела) */
+/* Контейнер модального окна */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(26, 26, 46, 0.97); /* Глубокий синий */
+    display: none; /* Скрыто до клика */
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 40px;
+    backdrop-filter: blur(8px); /* Размытие фона */
+}
+
+/* Показываем при активации ссылки */
+.lightbox:target {
+    display: flex;
+}
+
+/* 2. Белый контейнер окна */
+.lightbox-content {
+    background: #ffffff;
+    display: flex;
+    width: 100%;
+    max-width: 1200px; 
+    height: 70vh;   
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    overflow: hidden;
+    animation: scaleIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 3. Левая часть - ФОТО */
+.lightbox-img {
+    flex: 1; /* Фото занимает больше места */
+    background: #1a1a2e;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 4px solid #c5a059; /* Золотой разделитель */
+}
+
+.lightbox-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Заполняет всё пространство */
+    padding: 20px;
+}
+
+/* 4. Правая часть - ТЕКСТ */
+/* Правая часть - ТЕКСТ */
+.lightbox-text {
+    flex: 1;
+    padding: 80px 60px; /* Увеличиваем отступы, чтобы текст "дышал" */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрирует всё содержимое по вертикали */
+    align-items: flex-start; /* Выравнивание по левому краю */
+    background: #ffffff;
+    position: relative;
+    text-align: left;
+}
+
+/* Заголовок (НАЗВА ПРОЕКТУ) */
+.lightbox-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; /* Крупный размер */
+    color: #1a1a2e; /* Твой синий */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.1;
+}
+
+/* Твоя золотая линия */
+.lightbox-text .h {
+    width: 80px;
+    background-color: #c5a059; /* Золото */
+    margin-bottom: 20px;
+}
+
+/* Описание работы */
+.lightbox-text .desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    max-width: 1000px; /* Чтобы строка текста не была слишком длинной */
+}
+
+/* 5. Кнопки закрытия */
+.close-x {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 45px;
+    color: #1a1a2e;
+    text-decoration: none;
+    transition: 0.3s;
+    line-height: 1;
+}
+
+.close-x:hover {
+    color: #c5a059;
+    transform: rotate(90deg);
+}
+
+
+/* Шапка страницы (из стр. 10 вашего кода) */
+.work-page-header {
+    padding: 80px 0 60px; 
+    background-color: #ecf5ff; 
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.container-mini {
+    max-width: 1000px;
+    width: 90%;
+}
+
+.work-page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size:  2.5rem;;
+    color: #1a1a2e;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.work-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Секция Концепции (из стр. 7 вашего кода) */
+.cards-static {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Текст слева, фото справа */
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.card-plain h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #1a1a2e;
+    margin-bottom: 20px;
+}
+
+.card-plain img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 5px;
+    /* Декоративный сдвиг фона из вашего кода */
+    box-shadow: 20px 20px 0px #ddeeff; 
+}
+
+/* Сетка дополнительных рендеров (из стр. 11-12) */
+.portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    grid-auto-flow: dense;
+}
+
+.work-item.wide {
+    grid-column: span 2;
+}
+
+/* Эффект при наведении на фото (из стр. 12) */
+.work-link {
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+.work-link img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.work-link:hover img {
+    transform: scale(1.05);
+}
+
+/* Золотая линия (ваша фирменная деталь) */
+.h {
+    width: 80px;
+    border: 0;
+    border-top: 2px solid #c5a059;
+    margin: 20px 0;
+}
+
+.h3 {
+    width: 250px;
+    border: 0;
+    border-top: 2px solid #c5a059;
+    margin: 20px 0;
+}
+
